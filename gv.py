@@ -1,0 +1,1 @@
+spore_mod_api_path = "F:/Spore/Spore-ModAPI/Spore ModAPI/Spore"

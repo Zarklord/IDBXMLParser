@@ -1,0 +1,31 @@
+<STRUCTURE NAME="_stat64i32" NAMESPACE="/wchar.h" SIZE="0x30">
+    <MEMBER OFFSET="0x0" DATATYPE="_dev_t" DATATYPE_NAMESPACE="/wchar.h" NAME="st_dev" SIZE="0x4" />
+    <MEMBER OFFSET="0x4" DATATYPE="_ino_t" DATATYPE_NAMESPACE="/wchar.h" NAME="st_ino" SIZE="0x2" />
+    <MEMBER OFFSET="0x6" DATATYPE="ushort" DATATYPE_NAMESPACE="/" NAME="st_mode" SIZE="0x2" />
+    <MEMBER OFFSET="0x8" DATATYPE="short" DATATYPE_NAMESPACE="/" NAME="st_nlink" SIZE="0x2" />
+    <MEMBER OFFSET="0xa" DATATYPE="short" DATATYPE_NAMESPACE="/" NAME="st_uid" SIZE="0x2" />
+    <MEMBER OFFSET="0xc" DATATYPE="short" DATATYPE_NAMESPACE="/" NAME="st_gid" SIZE="0x2" />
+    <MEMBER OFFSET="0x10" DATATYPE="_dev_t" DATATYPE_NAMESPACE="/wchar.h" NAME="st_rdev" SIZE="0x4" />
+    <MEMBER OFFSET="0x14" DATATYPE="_off_t" DATATYPE_NAMESPACE="/wchar.h" NAME="st_size" SIZE="0x4" />
+    <MEMBER OFFSET="0x18" DATATYPE="__time64_t" DATATYPE_NAMESPACE="/crtdefs.h" NAME="st_atime" SIZE="0x8" />
+    <MEMBER OFFSET="0x20" DATATYPE="__time64_t" DATATYPE_NAMESPACE="/crtdefs.h" NAME="st_mtime" SIZE="0x8" />
+    <MEMBER OFFSET="0x28" DATATYPE="__time64_t" DATATYPE_NAMESPACE="/crtdefs.h" NAME="st_ctime" SIZE="0x8" />
+</STRUCTURE>
+
+<UNION NAME="_union_658" NAMESPACE="/wingdi.h" SIZE="0x4">
+    <MEMBER OFFSET="0x0" DATATYPE="DWORD" DATATYPE_NAMESPACE="/WinDef.h" NAME="dmDisplayFlags" SIZE="0x4" />
+    <MEMBER OFFSET="0x0" DATATYPE="DWORD" DATATYPE_NAMESPACE="/WinDef.h" NAME="dmNup" SIZE="0x4" />
+</UNION>
+
+<ENUM NAME="define_WINVER" NAMESPACE="/defines" SIZE="0x8">
+    <ENUM_ENTRY NAME="WINVER" VALUE="0x900" COMMENT="" />
+</ENUM>
+
+<TYPE_DEF NAME="int16_t" NAMESPACE="/stdint.h" DATATYPE="short" DATATYPE_NAMESPACE="/" />
+
+<FUNCTION_DEF NAME="_func_void_void_ptr_void_ptr" NAMESPACE="/Demangler/!_anon_funcs_">
+    <REGULAR_CMT>Function Signature Data Type</REGULAR_CMT>
+    <RETURN_TYPE DATATYPE="void" DATATYPE_NAMESPACE="/" SIZE="0x0" />
+    <PARAMETER ORDINAL="0x0" DATATYPE="void *" DATATYPE_NAMESPACE="/" NAME="" SIZE="0x4" />
+    <PARAMETER ORDINAL="0x1" DATATYPE="void *" DATATYPE_NAMESPACE="/" NAME="" SIZE="0x4" />
+</FUNCTION_DEF>

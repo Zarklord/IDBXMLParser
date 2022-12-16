@@ -1,0 +1,6 @@
+<?xml version="1.0" standalone="yes"?>
+<?program_dtd version="1"?>
+<PROGRAM NAME="SporeModAPI.h">
+    <PROCESSOR NAME="metapc" ENDIAN="little" ADDRESS_MODEL="32-bit"/>
+    <DATATYPES/>
+</PROGRAM>
