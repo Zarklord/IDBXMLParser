@@ -1,7 +1,5 @@
-import os
 from cpp_predefined_types import apply_predefined_types
 from cpp_to_xml import *
-import gv
 
 from cpp import init_cpp, write_xml
 
@@ -10,6 +8,7 @@ if __name__ == '__main__':
     cpp_global = init_cpp("Spore")
     apply_predefined_types(cpp_global)
 
+    #this what cpp_class_example.h would parse into:
     PrimaryBaseClass = cpp_global.add_class("PrimaryBaseClass")
     PrimaryBaseClass.add_member_variable("baseMemberVariable", "uint32_t")
 
