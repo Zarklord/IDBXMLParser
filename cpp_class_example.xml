@@ -1,0 +1,73 @@
+<?xml version="1.0" standalone="yes"?>
+<?program_dtd version="1"?>
+<PROGRAM NAME="SporeModAPI.h">
+    <PROCESSOR NAME="metapc" ENDIAN="little" ADDRESS_MODEL="32-bit"/>
+    <DATATYPES>
+        <FUNCTION_DEF NAME="PrimaryBaseClass::baseMemberFunction" NAMESPACE="/PrimaryBaseClass">
+            <RETURN_TYPE DATATYPE="void" DATATYPE_NAMESPACE="" SIZE="0x0"/>
+            <PARAMETER ORDINAL="0x0" DATATYPE="PrimaryBaseClass *" DATATYPE_NAMESPACE="" NAME="this" SIZE="0x4"/>
+            <PARAMETER ORDINAL="0x1" DATATYPE="uint8_t" DATATYPE_NAMESPACE="/stdint.h" NAME="arg1" SIZE="0x1"/>
+        </FUNCTION_DEF>
+        <STRUCTURE NAME="PrimaryBaseClass_vtbl" NAMESPACE="/PrimaryBaseClass" SIZE="0x4">
+            <MEMBER OFFSET="0x0" DATATYPE="PrimaryBaseClass::baseVirtualFunction *" DATATYPE_NAMESPACE="/PrimaryBaseClass" NAME="baseVirtualFunction" SIZE="0x4"/>
+        </STRUCTURE>
+        <FUNCTION_DEF NAME="PrimaryBaseClass::baseVirtualFunction" NAMESPACE="/PrimaryBaseClass">
+            <RETURN_TYPE DATATYPE="uint16_t" DATATYPE_NAMESPACE="/stdint.h" SIZE="0x2"/>
+            <PARAMETER ORDINAL="0x0" DATATYPE="PrimaryBaseClass *" DATATYPE_NAMESPACE="" NAME="this" SIZE="0x4"/>
+        </FUNCTION_DEF>
+        <STRUCTURE NAME="PrimaryBaseClass" NAMESPACE="" SIZE="0x8">
+            <MEMBER OFFSET="0x0" DATATYPE="PrimaryBaseClass_vtbl" DATATYPE_NAMESPACE="/PrimaryBaseClass" SIZE="0x4"/>
+            <MEMBER OFFSET="0x4" DATATYPE="uint32_t" DATATYPE_NAMESPACE="/stdint.h" NAME="baseMemberVariable" SIZE="0x4"/>
+        </STRUCTURE>
+        <FUNCTION_DEF NAME="SecondaryBaseClass::secondaryMemberFunction" NAMESPACE="/SecondaryBaseClass">
+            <RETURN_TYPE DATATYPE="uint8_t" DATATYPE_NAMESPACE="/stdint.h" SIZE="0x1"/>
+            <PARAMETER ORDINAL="0x0" DATATYPE="SecondaryBaseClass *" DATATYPE_NAMESPACE="" NAME="this" SIZE="0x4"/>
+            <PARAMETER ORDINAL="0x1" DATATYPE="uint16_t" DATATYPE_NAMESPACE="/stdint.h" NAME="arguement" SIZE="0x2"/>
+        </FUNCTION_DEF>
+        <STRUCTURE NAME="SecondaryBaseClass_vtbl" NAMESPACE="/SecondaryBaseClass" SIZE="0x4">
+            <MEMBER OFFSET="0x0" DATATYPE="SecondaryBaseClass::secondaryVirtualFunction *" DATATYPE_NAMESPACE="/SecondaryBaseClass" NAME="secondaryVirtualFunction" SIZE="0x4"/>
+        </STRUCTURE>
+        <FUNCTION_DEF NAME="SecondaryBaseClass::secondaryVirtualFunction" NAMESPACE="/SecondaryBaseClass">
+            <RETURN_TYPE DATATYPE="void" DATATYPE_NAMESPACE="" SIZE="0x0"/>
+            <PARAMETER ORDINAL="0x0" DATATYPE="SecondaryBaseClass *" DATATYPE_NAMESPACE="" NAME="this" SIZE="0x4"/>
+            <PARAMETER ORDINAL="0x1" DATATYPE="bool" DATATYPE_NAMESPACE="/" NAME="arg1" SIZE="0x4"/>
+            <PARAMETER ORDINAL="0x2" DATATYPE="bool" DATATYPE_NAMESPACE="/" NAME="arg2" SIZE="0x4"/>
+        </FUNCTION_DEF>
+        <STRUCTURE NAME="SecondaryBaseClass" NAMESPACE="" SIZE="0x6">
+            <MEMBER OFFSET="0x0" DATATYPE="SecondaryBaseClass_vtbl" DATATYPE_NAMESPACE="/SecondaryBaseClass" SIZE="0x4"/>
+            <MEMBER OFFSET="0x4" DATATYPE="uint16_t" DATATYPE_NAMESPACE="/stdint.h" NAME="secondaryMemberVariable" SIZE="0x2"/>
+        </STRUCTURE>
+        <FUNCTION_DEF NAME="DerivedClass::derivedMemberFunction" NAMESPACE="/DerivedClass">
+            <RETURN_TYPE DATATYPE="uint8_t" DATATYPE_NAMESPACE="/stdint.h" SIZE="0x1"/>
+            <PARAMETER ORDINAL="0x0" DATATYPE="DerivedClass *" DATATYPE_NAMESPACE="" NAME="this" SIZE="0x4"/>
+        </FUNCTION_DEF>
+        <STRUCTURE NAME="DerivedClass_PrimaryBaseClass_vtbl" NAMESPACE="/DerivedClass" SIZE="0x4">
+            <MEMBER OFFSET="0x0" DATATYPE="DerivedClass::baseVirtualFunction *" DATATYPE_NAMESPACE="/DerivedClass" NAME="baseVirtualFunction" SIZE="0x4"/>
+        </STRUCTURE>
+        <STRUCTURE NAME="DerivedClass_SecondaryBaseClass_vtbl" NAMESPACE="/DerivedClass" SIZE="0x8">
+            <MEMBER OFFSET="0x0" DATATYPE="DerivedClass::secondaryVirtualFunction *" DATATYPE_NAMESPACE="/DerivedClass" NAME="secondaryVirtualFunction" SIZE="0x4"/>
+            <MEMBER OFFSET="0x4" DATATYPE="DerivedClass::derivedVirtualFunction *" DATATYPE_NAMESPACE="/DerivedClass" NAME="derivedVirtualFunction" SIZE="0x4"/>
+        </STRUCTURE>
+        <FUNCTION_DEF NAME="DerivedClass::derivedVirtualFunction" NAMESPACE="/DerivedClass">
+            <RETURN_TYPE DATATYPE="uint32_t" DATATYPE_NAMESPACE="/stdint.h" SIZE="0x4"/>
+            <PARAMETER ORDINAL="0x0" DATATYPE="DerivedClass *" DATATYPE_NAMESPACE="" NAME="this" SIZE="0x4"/>
+        </FUNCTION_DEF>
+        <FUNCTION_DEF NAME="DerivedClass::baseVirtualFunction" NAMESPACE="/DerivedClass">
+            <RETURN_TYPE DATATYPE="uint16_t" DATATYPE_NAMESPACE="/stdint.h" SIZE="0x2"/>
+            <PARAMETER ORDINAL="0x0" DATATYPE="DerivedClass *" DATATYPE_NAMESPACE="" NAME="this" SIZE="0x4"/>
+        </FUNCTION_DEF>
+        <FUNCTION_DEF NAME="DerivedClass::secondaryVirtualFunction" NAMESPACE="/DerivedClass">
+            <RETURN_TYPE DATATYPE="void" DATATYPE_NAMESPACE="" SIZE="0x0"/>
+            <PARAMETER ORDINAL="0x0" DATATYPE="DerivedClass *" DATATYPE_NAMESPACE="" NAME="this" SIZE="0x4"/>
+            <PARAMETER ORDINAL="0x1" DATATYPE="bool" DATATYPE_NAMESPACE="/" NAME="arg1" SIZE="0x4"/>
+            <PARAMETER ORDINAL="0x2" DATATYPE="bool" DATATYPE_NAMESPACE="/" NAME="arg2" SIZE="0x4"/>
+        </FUNCTION_DEF>
+        <STRUCTURE NAME="DerivedClass" NAMESPACE="" SIZE="0x12">
+            <MEMBER OFFSET="0x0" DATATYPE="DerivedClass_PrimaryBaseClass_vtbl" DATATYPE_NAMESPACE="/DerivedClass" SIZE="0x4"/>
+            <MEMBER OFFSET="0x4" DATATYPE="uint32_t" DATATYPE_NAMESPACE="/stdint.h" NAME="baseMemberVariable" SIZE="0x4"/>
+            <MEMBER OFFSET="0x8" DATATYPE="DerivedClass_SecondaryBaseClass_vtbl" DATATYPE_NAMESPACE="/DerivedClass" SIZE="0x4"/>
+            <MEMBER OFFSET="0xc" DATATYPE="uint16_t" DATATYPE_NAMESPACE="/stdint.h" NAME="secondaryMemberVariable" SIZE="0x2"/>
+            <MEMBER OFFSET="0xe" DATATYPE="char" DATATYPE_NAMESPACE="/" NAME="derivedMemberVariable" SIZE="0x4"/>
+        </STRUCTURE>
+    </DATATYPES>
+</PROGRAM>

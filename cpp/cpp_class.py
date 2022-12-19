@@ -28,10 +28,10 @@ class cpp_parent_class_def(cpp_name_lookup):
 
 def find_function_in_vtbl(vtbl_function, virtual_functions):
     for cpp_virtual_function in virtual_functions:
-        if vtbl_function.vtable_name == cpp_virtual_function.vtable_name and vtbl_function.matches_function_signature(cpp_virtual_function):
+        if vtbl_function.function_name == cpp_virtual_function.function_name and vtbl_function.matches_function_signature(cpp_virtual_function):
             return cpp_virtual_function
 
-class cpp_class(cpp_base, cpp_member_variables, *cpp_class_lookup):
+class cpp_class_def(cpp_base, cpp_member_variables, *cpp_class_lookup):
     XML_TYPE = "STRUCTURE"
     XML_VTBL_TYPE = "MEMBER"
     VTBL_POSTFIX = "_vtbl"
@@ -97,21 +97,20 @@ class cpp_class(cpp_base, cpp_member_variables, *cpp_class_lookup):
         virtual_member_functions = set()
         child_cpp_name = self.cpp_name + "::"
 
-        for vtbl in self.get_vtables():
-            for vtbl_name, vtbl_functions in vtbl:
-                data_size = len(vtbl_functions) * 4
-                vtbl_element = SubElement(parent, self.XML_TYPE, {
-                    'NAME': vtbl_name + self.VTBL_POSTFIX,
-                    'NAMESPACE': self.child_ghidra_namespace,
-                    'SIZE': hex(data_size),
-                })
-                offset = 0
+        for vtbl_name, vtbl_functions in self.get_vtables().items():
+            data_size = len(vtbl_functions) * 4
+            vtbl_element = SubElement(parent, self.XML_TYPE, {
+                'NAME': vtbl_name + self.VTBL_POSTFIX,
+                'NAMESPACE': self.child_ghidra_namespace,
+                'SIZE': hex(data_size),
+            })
+            offset = 0
 
-                for vtbl_function in vtbl_functions:
-                    virtual_member_functions.add(vtbl_function)
-                    offset = vtbl_function.get_vtable_xml(vtbl_element, offset, child_cpp_name, self.child_ghidra_namespace)
+            for vtbl_function in vtbl_functions:
+                virtual_member_functions.add(vtbl_function)
+                offset = vtbl_function.get_vtable_xml(vtbl_element, offset, child_cpp_name, self.child_ghidra_namespace)
 
-                assert(offset == data_size)
+            assert(offset == data_size)
 
         for virtual_member_function in virtual_member_functions:
             virtual_member_function.get_xml(parent, self.cpp_name, child_cpp_name, self.child_ghidra_namespace)
@@ -119,8 +118,7 @@ class cpp_class(cpp_base, cpp_member_variables, *cpp_class_lookup):
     def get_class_xml(self, parent, offset, vtbl_parent_name, vtbl_ghidra_namespace):
         for cpp_parent_class in self.parent_classes:
             offset = cpp_parent_class.get_class_xml(parent, offset, vtbl_parent_name + self.class_name + "_", vtbl_ghidra_namespace)
-
-        if self.is_base_class() and self.has_vtable():
+        if self.write_vtable():
             data_size = 4
             SubElement(parent, self.XML_VTBL_TYPE, {
                 'OFFSET': hex(offset),
@@ -128,16 +126,16 @@ class cpp_class(cpp_base, cpp_member_variables, *cpp_class_lookup):
                 'DATATYPE_NAMESPACE': vtbl_ghidra_namespace,
                 'SIZE': hex(data_size),
             })
-            offset + data_size
+            offset += data_size
 
         for cpp_variable in self.variables:
-            offset += cpp_variable.get_xml(parent, offset)
+            offset = cpp_variable.get_xml(parent, offset)
         
         return offset
         
     def get_primary_vtbl_name(self):
-        cpp_parent_class = self.parent_classes[1]
-        if cpp_parent_class:
+        if len(self.parent_classes) > 0:
+            cpp_parent_class = self.parent_classes[1]
             return self.class_name + "_" + cpp_parent_class.get_primary_vtbl_name()
         return self.class_name
 
@@ -151,7 +149,7 @@ class cpp_class(cpp_base, cpp_member_variables, *cpp_class_lookup):
         virtual_function_refs = {}
 
         for parent_vtbl_dictionary in parent_vtbl_dictionaries:
-            for vtbl_name, vtbl_functions in parent_vtbl_dictionary:
+            for vtbl_name, vtbl_functions in parent_vtbl_dictionary.items():
                 for vtbl_function_index in range(len(vtbl_functions)):
                     vtbl_function = vtbl_functions[vtbl_function_index]
 

@@ -19,9 +19,9 @@ class preprocessor_function_define():
         self.value = value
 
     def get_value(self, arguments):
-        args = 
-        arguments = 
-        arg_dicitonary = dict(zip(get_split_args(self.args), get_split_args(arguments)))
+        #args = 
+        #arguments = 
+        #arg_dicitonary = dict(zip(get_split_args(self.args), get_split_args(arguments)))
 
 
         pass

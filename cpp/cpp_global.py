@@ -17,7 +17,7 @@ class cpp_global_def(*cpp_global_lookups):
         cpp_namespace_def.__init__(self, "", "", "")
         types_container.__init__(self)
         self.ghidra_namespace = "/" + ghidra_namespace
-        self.child_ghidra_namespace = None
+        self.child_ghidra_namespace = ""
 
         self.defines = {}
         self.function_defines = {}

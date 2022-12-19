@@ -10,7 +10,7 @@ class cpp_variable_def(cpp_name_lookup):
         self.name = name
         self.datatype = datatype
 
-    def get_size(self):
+    def data_size(self):
         return get_data_size(self.datatype)
 
     def get_xml(self, parent, offset):

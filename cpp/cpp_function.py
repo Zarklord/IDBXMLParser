@@ -16,7 +16,7 @@ class cpp_function_return_def(cpp_name_lookup):
         SubElement(parent, self.XML_TYPE, {
             'DATATYPE':self.datatype,
             'DATATYPE_NAMESPACE':get_ghidra_namespace(self.datatype),
-            'SIZE':get_data_size(self.datatype),
+            'SIZE':hex(get_data_size(self.datatype)),
         })
         
     def resolve_types(self):
@@ -34,12 +34,12 @@ class cpp_function_arg_def(cpp_name_lookup):
         return self.name == other.name and self.datatype == other.datatype
 
     def get_xml(self, parent, ordinal):
-        SubElement(parent, self.XML_ARG_TYPE, {
+        SubElement(parent, self.XML_TYPE, {
             'ORDINAL':hex(ordinal),
             'DATATYPE':self.datatype,
             'DATATYPE_NAMESPACE':get_ghidra_namespace(self.datatype),
             'NAME':self.name,
-            'SIZE':get_data_size(self.datatype),
+            'SIZE':hex(get_data_size(self.datatype)),
         })
         
     def resolve_types(self):
